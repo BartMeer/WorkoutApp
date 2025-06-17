@@ -217,10 +217,6 @@ export default function WorkoutDetail() {
 
       {/* Exercise timeline */}
       <main className="pt-28 pb-32 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-        <h1 className="text-2xl font-bold mb-6 text-center text-gray-800">
-          Your Workout
-        </h1>
-
         <ol
           className="space-y-4 sm:space-y-6 overflow-y-auto px-1"
           style={{ maxHeight: "calc(100vh - 280px)" }}
