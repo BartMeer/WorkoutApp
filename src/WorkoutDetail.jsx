@@ -217,10 +217,7 @@ export default function WorkoutDetail() {
 
       {/* Exercise timeline */}
       <main className="pt-28 pb-32 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-        <ol
-          className="space-y-4 sm:space-y-6 overflow-y-auto px-1"
-          style={{ maxHeight: "calc(100vh - 280px)" }}
-        >
+        <ol className="space-y-4 sm:space-y-6 overflow-y-auto px-1">
           {exercises.map((ex, idx) => {
             const isCurrent = idx === currentIndex;
             const isPast = idx < currentIndex;
