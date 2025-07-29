@@ -23,23 +23,21 @@ export default function HomeScreen() {
 
   if (loading)
     return (
-      <div className="min-h-screen bg-white flex justify-center items-center">
+      <div className="min-h-screen bg-gray-900 flex justify-center items-center">
         <div className="text-center">
-          <div className="w-16 h-16 border-4 border-orange-500 border-t-transparent rounded-full animate-spin mx-auto mb-6"></div>
-          <p className="text-gray-600 text-lg font-medium">
-            Loading workouts...
-          </p>
+          <div className="w-16 h-16 border-4 border-orange-400 border-t-transparent rounded-full animate-spin mx-auto mb-6"></div>
+          <p className="text-gray-300 text-lg font-medium">Loading workouts...</p>
         </div>
       </div>
     );
 
   if (error)
     return (
-      <div className="min-h-screen bg-white flex justify-center items-center px-4">
+      <div className="min-h-screen bg-gray-900 flex justify-center items-center px-4">
         <div className="text-center max-w-md w-full">
-          <div className="w-24 h-24 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-6">
+          <div className="w-24 h-24 bg-red-950 bg-opacity-30 rounded-full flex items-center justify-center mx-auto mb-6">
             <svg
-              className="w-12 h-12 text-red-500"
+              className="w-12 h-12 text-red-400"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -52,10 +50,8 @@ export default function HomeScreen() {
               />
             </svg>
           </div>
-          <h2 className="text-2xl font-bold text-gray-800 mb-4">
-            Oops! Something went wrong
-          </h2>
-          <p className="text-gray-600 mb-8">{error}</p>
+          <h2 className="text-2xl font-bold text-gray-100 mb-4">Oops! Something went wrong</h2>
+          <p className="text-gray-400 mb-8">{error}</p>
           <button
             onClick={() => window.location.reload()}
             className="w-full bg-orange-500 text-white py-4 rounded-xl font-semibold text-lg hover:bg-orange-600 transition-colors"
@@ -67,13 +63,13 @@ export default function HomeScreen() {
     );
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-gray-900">
       {/* Top bar */}
-      <header className="fixed top-0 left-0 w-full z-30 bg-white shadow-sm">
+      <header className="fixed top-0 left-0 w-full z-30 bg-gray-900 shadow-md border-b border-gray-700">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             <div className="w-16" />
-            <h1 className="text-2xl font-bold text-gray-800">Workout List</h1>
+            <h1 className="text-2xl font-bold text-gray-100">Workout List</h1>
             <div className="w-16" />
           </div>
         </div>
@@ -83,9 +79,9 @@ export default function HomeScreen() {
       <main className="pt-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
         {workouts.length === 0 ? (
           <div className="text-center py-12">
-            <div className="w-24 h-24 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-6">
+            <div className="w-24 h-24 bg-gray-800 rounded-full flex items-center justify-center mx-auto mb-6">
               <svg
-                className="w-12 h-12 text-gray-400"
+                className="w-12 h-12 text-gray-600"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -98,17 +94,15 @@ export default function HomeScreen() {
                 />
               </svg>
             </div>
-            <h2 className="text-2xl font-bold text-gray-800 mb-4">
-              No Workouts Found
-            </h2>
-            <p className="text-gray-600">Check back later for new workouts!</p>
+            <h2 className="text-2xl font-bold text-gray-100 mb-4">No Workouts Found</h2>
+            <p className="text-gray-400">Check back later for new workouts!</p>
           </div>
         ) : (
           <div className="grid gap-6 sm:gap-8 sm:grid-cols-2 lg:grid-cols-3">
             {workouts.map(({ id, name, duration, description, rest }) => (
               <div
                 key={id}
-                className="bg-white rounded-xl border border-gray-200 shadow-sm hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1 cursor-pointer"
+                className="bg-gray-800 rounded-xl border border-gray-700 shadow-sm hover:shadow-lg hover:border-orange-500 transition-all duration-300 transform hover:-translate-y-1 cursor-pointer"
                 tabIndex={0}
                 role="button"
                 onKeyDown={(e) => {
@@ -120,20 +114,18 @@ export default function HomeScreen() {
               >
                 <div className="p-6">
                   <div className="flex items-center justify-between mb-4">
-                    <h2 className="text-2xl font-bold text-gray-800 group-hover:text-orange-500 transition-colors duration-200">
+                    <h2 className="text-xl font-bold text-gray-100 group-hover:text-orange-400 transition-colors duration-200">
                       {name}
                     </h2>
-                    <div className="bg-orange-100 text-orange-600 px-3 py-1 rounded-full text-sm font-semibold">
+                    <div className="bg-orange-950 bg-opacity-30 text-orange-400 px-3 py-1 rounded-full text-sm font-semibold">
                       {duration} min
                     </div>
                   </div>
-                  <p className="text-gray-600 mb-6 line-clamp-3">
-                    {description}
-                  </p>
-                  <div className="flex items-center justify-between pt-4 border-t border-gray-100">
+                  <p className="text-gray-400 mb-6 line-clamp-3">{description}</p>
+                  <div className="flex items-center justify-between pt-4 border-t border-gray-700">
                     <div className="flex items-center space-x-2">
                       <svg
-                        className="w-5 h-5 text-gray-400"
+                        className="w-5 h-5 text-gray-500"
                         fill="none"
                         stroke="currentColor"
                         viewBox="0 0 24 24"
@@ -145,13 +137,9 @@ export default function HomeScreen() {
                           d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
                         />
                       </svg>
-                      <span className="text-sm text-gray-600">
-                        Rest: {rest}s
-                      </span>
+                      <span className="text-sm text-gray-400">Rest: {rest}s</span>
                     </div>
-                    <div className="text-orange-500 font-semibold">
-                      Start Workout →
-                    </div>
+                    <div className="text-orange-400 font-semibold">Start Workout →</div>
                   </div>
                 </div>
               </div>
